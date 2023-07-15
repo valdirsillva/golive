@@ -1,0 +1,19 @@
+
+
+RewriteEngine On
+
+<filesMatch ".(ico|pdf|flv|jpg|jpeg|png|gif|svg)$">
+	Header set Cache-Control "max-age=31536000, public"
+</FilesMatch>
+
+
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Este domínio herda o pacote “PHP”.
+# php -- END cPanel-generated handler, do not edit

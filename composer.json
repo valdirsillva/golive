@@ -1,0 +1,13 @@
+{
+    "name": "valdirsillva/golive",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Services\\": "services",
+            "Web\\": "web"
+        }
+    },
+    "require": {
+        "vlucas/phpdotenv": "^5.4"
+    }
+}

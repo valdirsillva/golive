@@ -1,0 +1,102 @@
+.form-mycake-bg > button {
+	font-size:  100%;
+	background: #f20c55;
+	color:  white;
+	cursor:  pointer;
+	padding: 1.10rem 2rem;
+}
+
+.form-mycake-bg > button:hover{
+	transform:  .5s ease-in;
+}
+
+.sidebar .sidebar-wrapper {
+	overflow: hidden;
+}
+
+h1, .pedido-cliente, .pedido-cliente > .list {
+	display: flex;
+}
+
+h1 {
+	font-size: 3rem;
+    font-weight: 800;
+    color: #5b69cd;
+    margin-bottom: 4rem;
+    gap: 4%;
+}
+
+
+.pedido-cliente, .pedido-itens, .pedido-info > h3 {
+	padding: 0 30px;
+}
+
+.pedido-cliente {
+ 	flex-direction: column;
+ 	background:  #e4dde5;
+ 	border-radius:  10px;
+ 	padding-bottom: 3.24rem;
+}
+
+
+.pedido-cliente > .list {
+    flex-direction: row;
+    gap: 12%;
+}
+
+.pedido-cliente > h3 {
+	display: block;
+}
+
+.pedido-cliente > h3, .pedido-info > h3 {
+ 	font-size: 2rem;
+ 	font-weight: 700;
+ 	color: #d82d68;
+ 	margin-bottom: 3rem; 	
+}
+
+.list > ul {
+ 	flex-direction: row;
+ 	gap: 30px;
+}
+
+.list > ul, .pedido-itens > ul {
+ 	list-style: none;
+ 	padding-left: 0;
+}
+
+.list > ul > li {
+  	padding: .25rem 0;
+}
+
+@media screen and (max-width: 360px) {
+	h1 {
+		font-size: 2.24rem
+	}
+	.pedido-cliente > h3, .pedido-info > h3 {
+		font-size: 1.5rem;
+	}
+}
+
+/* customizar barra de rolagem */
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #5b69cd;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(213, 213, 213);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(213, 213, 213);
+}
