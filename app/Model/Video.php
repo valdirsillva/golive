@@ -46,9 +46,7 @@ class Video
 
         $query = $this->connection->prepare($query);
         $query->execute();
-
         $allResults = $query->fetchAll(PDO::FETCH_ASSOC);
-
         return $allResults;
     }
 
@@ -60,7 +58,6 @@ class Video
         );
         $query->execute();
         $allResults = $query->fetchAll(PDO::FETCH_ASSOC);
-
         return $allResults;
     }
 
@@ -69,7 +66,6 @@ class Video
         $query = $this->connection->prepare(" SELECT * FROM tb_category ");
         $query->execute();
         $allResults = $query->fetchAll(PDO::FETCH_ASSOC);
-
         return $allResults;
     }
 

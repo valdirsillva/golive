@@ -5,7 +5,7 @@ var DATA = { }; // iniciando o objeto literal vazio
 
 const buttonClick = getFirstSelector('[type="submit"]');
 
-const URL = 'https://nucleo.flexcontact.com.br/guia_online/services/index.php';
+const URL = 'http://localhost/golive/services/index.php';
 
 const searchIndicator = getFirstSelector('#botao__pesquisar_indicador');
 
@@ -58,10 +58,6 @@ buttonClick.addEventListener("click", async () => {
      messageToastr(res);
 })
 
-
-
-
-
 function messageToastr(res) {
   if (res.status === 201) {
       toastr.success('Indicador cadastrado com sucesso !');
@@ -79,7 +75,7 @@ searchIndicator.onclick =  async function(e) {
 
     let inputValue =  getFirstSelector('#indicator').value;
              
-    let data = await fetch(`https://nucleo.flexcontact.com.br/guia_online/services/indicator.php?indicator=${inputValue}`);
+    let data = await fetch(`http://localhost/golive/services/services/indicator.php?indicator=${inputValue}`);
 
     let results = await data.json();
 
@@ -89,7 +85,7 @@ searchIndicator.onclick =  async function(e) {
 }
 
 async function listIndicator() {
-  let data = await fetch('https://nucleo.flexcontact.com.br/guia_online/services/list_indicators.php');
+  let data = await fetch('http://localhost/golive/services/services/list_indicators.php');
   let namesIndicators = await data.json();
 
   namesIndicators.map(indicator => {
@@ -98,7 +94,6 @@ async function listIndicator() {
 }
 
 function select(indicator) {
-
   let option = document.createElement('option');
 
   option.value = indicator.indicator;

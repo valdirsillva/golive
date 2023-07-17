@@ -84,7 +84,6 @@ class ControllerVideo {
 	{
 		$like = self::modelVideo(); 
 		$results = $like->likes($videoid);
-
 		return $results;
 	}
 
@@ -96,7 +95,6 @@ class ControllerVideo {
 
 		$view = self::modelVideo();
 		$row = $view->issetView($videoid);
-
 		return $row;
 	}
 
