@@ -1,16 +1,18 @@
-<?php 
+<?php
 
 
-namespace App\Controller\Auth;
+namespace App\Controllers\Auth;
 
-if (!isset($_SESSION)):  session_start(); endif; 
+if (!isset($_SESSION)):  session_start();
+endif;
 
 use App\Model\Login;
 
 
-class Auth {
-    
-    public static function login($data): void 
+class Auth
+{
+
+    public static function login($data): void
     {
         $login = new Login;
         $data = $login->getUserLogin($data);
@@ -20,31 +22,31 @@ class Auth {
         }
     }
 
-    public function confirm($isConfirm) 
+    public function confirm($isConfirm)
     {
         try {
             $user = new Update;
             $results = $user->confirmMail($isConfirm);
-        } catch(Exception $error) {
-            throw new Exception($error->getMessage());
+        } catch (Exception $error) {
+            throw new \Exception($error->getMessage());
         }
 
         return $results;
     }
 
-    public static function getFormData() 
+    public static function getFormData()
     {
-       return filter_input_array(INPUT_POST, FILTER_DEFAULT);
+        return filter_input_array(INPUT_POST, FILTER_DEFAULT);
     }
 
-    public static function getLevelAuthorized(array $data): void 
+    public static function getLevelAuthorized(array $data): void
     {
         Login::initSession($data);
         header('Location: home');
         exit;
     }
 
-    public static function initSession($data) 
+    public static function initSession($data)
     {
         if (!empty($data)) {
             $_SESSION['userid'] = $data['id_user'];
@@ -54,14 +56,14 @@ class Auth {
 
         header("Location: home");
     }
-     
+
     public static function validateData(array $data)
     {
         if (isset($data) && empty($data)) {
-            throw new Exception("");
+            throw new \Exception("");
         }
 
-        foreach($data as $key => $value) {
+        foreach ($data as $key => $value) {
             $replaced[$key] = strip_tags(str_replace(' ', '', ltrim($value)));
         }
 

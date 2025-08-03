@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * 
@@ -18,11 +18,11 @@ $method = isset($_SERVER['REQUEST_METHOD']) ? $_SERVER['REQUEST_METHOD'] : '';
 
 if (isset($_GET['usuario'])) {
 
-   if($method === 'GET' && $_GET['usuario']) {
+   if ($method === 'GET' && $_GET['usuario']) {
 
       $data = [
-        "user_id" => $_GET['usuario'],
-        "mes_atual" => $_GET['mes']
+         "user_id" => $_GET['usuario'],
+         "mes_atual" => $_GET['mes']
       ];
 
 
@@ -33,7 +33,4 @@ if (isset($_GET['usuario'])) {
 
       echo json_decode($points);
    }
-
 }
-
-

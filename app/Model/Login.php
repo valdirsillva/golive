@@ -1,30 +1,30 @@
-<?php 
+<?php
 
 
 namespace App\Model;
 
 use App\Connection\Connection;
 
-class Login 
+class Login
 {
-    private $connection;
+	private $connection;
 
-    public function __construct() 
-    {
-        $this->connection = Connection::getInstance();
-    }
+	public function __construct()
+	{
+		$this->connection = Connection::getInstance();
+	}
 
-    public function getUserLogin(array $data) 
-    {
-    
-        $toSql = "SELECT * FROM tb_user WHERE login_user = '{$data['login']}' AND pass_user = '{$data['password']}' ";
+	public function getUserLogin(array $data)
+	{
 
-        $query = $this->connection->prepare($toSql);
+		$toSql = "SELECT * FROM tb_user WHERE login_user = '{$data['login']}' AND pass_user = '{$data['password']}' ";
 
-        $query->execute();
+		$query = $this->connection->prepare($toSql);
 
-        $user = $query->fetch();
+		$query->execute();
 
-        return $user;
-    }
+		$user = $query->fetch();
+
+		return $user;
+	}
 }
