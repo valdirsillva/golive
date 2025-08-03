@@ -5,12 +5,13 @@ namespace Services;
 header('Content-Type: application/json');
 
 
-use App\Controller\ControllerVideo;
+use App\Controllers\VideoController;
 
 require "../vendor/autoload.php";
 
-class NotificationsService {
-	public static function get(ControllerVideo $video) 
+class NotificationsService
+{
+	public static function get(VideoController $video)
 	{
 		try {
 
@@ -21,17 +22,14 @@ class NotificationsService {
 			];
 
 			print json_encode($video::getNotifications($dataValues));
-
-		} catch(Exception $e) {
-			throw new Exception('Erro ao checar se existem notificações', 400);
+		} catch (\Exception $e) {
+			throw new \Exception('Erro ao checar se existem notificações', 400);
 		}
 	}
 }
 
 $method = isset($_SERVER['REQUEST_METHOD']) ? $_SERVER['REQUEST_METHOD'] : '';
 
-if($method === 'GET') {
-  NotificationsService::get(new ControllerVideo);
+if ($method === 'GET') {
+	NotificationsService::get(new VideoController);
 }
-
-

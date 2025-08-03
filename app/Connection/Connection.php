@@ -3,41 +3,42 @@
 
 
 namespace App\Connection;
+
 use Dotenv;
 use PDO;
 
-class Connection {
+class Connection
+{
 
-   private static $pdo = null;
+    private static $pdo = null;
 
-   private static $instance;
+    private static $instance;
 
-   /**
-    * construtor privado é a garantia que nenhuma nova instância poderá ser criada
-    */
-   private function __construct() {}
+    /**
+     * construtor privado é a garantia que nenhuma nova instância poderá ser criada
+     */
+    private function __construct() {}
 
 
-   // singleton pattern
-   public static function getInstance() 
-   {
+    // singleton pattern
+    public static function getInstance()
+    {
         try {
-            if(!self::$instance) {    
+            if (!self::$instance) {
                 self::$instance = self::connection();
             }
-        } catch(\PDOException $e) {
+        } catch (\PDOException $e) {
             throw new \Exception($e->getMessage());
         }
         return self::$instance;
-   }
+    }
 
-   private function connection() 
-   {
+    private static function connection()
+    {
         $path = 'http://localhost/golive/';
         $dotenv = Dotenv\Dotenv::createImmutable($path);
         $dotenv->load();
-        self::$pdo = new PDO("mysql:host=localhost;port=3307;dbname={$_ENV['DB_NAME']}", "{$_ENV['DB_USER']}", '');
+        self::$pdo = new PDO("mysql:host=localhost;port=3306;dbname={$_ENV['DB_NAME']}", "{$_ENV['DB_USER']}", '');
         return self::$pdo;
-   }
-
+    }
 }

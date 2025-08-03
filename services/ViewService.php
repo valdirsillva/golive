@@ -2,13 +2,13 @@
 
 header("Content-Type: application/json");
 
-use App\Controller\ControllerVideo;
+use App\Controllers\VideoController;
 
 require "../vendor/autoload.php";
 
 class ViewService
 {
-    public static function add(ControllerVideo $video)
+    public static function add(VideoController $video)
     {
         $json = file_get_contents("php://input");
         $obj = json_decode($json, true);
@@ -19,10 +19,9 @@ class ViewService
             "mensagem" => $obj["mensagem"],
             "video" => $obj["video"],
         ]);
-
     }
 
-    public static function setViewVideoById(ControllerVideo $video) 
+    public static function setViewVideoById(VideoController $video)
     {
         $json = file_get_contents("php://input");
         $obj = json_decode($json, true);
@@ -31,16 +30,16 @@ class ViewService
             "uuid_user" => $obj["userid"],
             "uuid_video" => $obj["videoid"],
             "uuid_product" => $obj["productid"]
-        ]);    
+        ]);
     }
 
-    public static function get(ControllerVideo $video)
+    public static function get(VideoController $video)
     {
-       
+
         if (!empty($_GET['videoid'])) {
             $videoid = $_GET['videoid'];
             $results = $video::views($videoid);
-            
+
             echo json_encode($results);
         }
     }
@@ -52,14 +51,14 @@ $content = json_decode($json, true);
 $method = isset($_SERVER["REQUEST_METHOD"]) ? $_SERVER["REQUEST_METHOD"] : "";
 
 if ($method === "POST" and $content["action"] == "ADD") {
-    ViewService::add(new ControllerVideo());
+    ViewService::add(new VideoController());
 }
 
 if ($method === "POST" and $content["action"] == "onplaying") {
-    ViewService::setViewVideoById(new ControllerVideo());
+    ViewService::setViewVideoById(new VideoController());
 }
 
 
 if ($method === 'GET') {
-    ViewService::get(new ControllerVideo());
+    ViewService::get(new VideoController());
 }
